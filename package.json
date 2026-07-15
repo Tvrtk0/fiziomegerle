@@ -1,0 +1,25 @@
+{
+  "name": "fiziomegerle",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "Lead-generation quiz for a back pain specialist (Muscle pain vs. Disc hernia).",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/react": "^4.2.1",
+    "astro": "^5.5.5",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.0.15",
+    "@types/react": "^19.0.10",
+    "@types/react-dom": "^19.0.4",
+    "tailwindcss": "^4.0.15"
+  }
+}
