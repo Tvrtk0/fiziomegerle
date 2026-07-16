@@ -1,4 +1,4 @@
-import { useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import {
   branchFromAnswers,
   buildQuestions,
@@ -6,11 +6,16 @@ import {
   type Answers,
 } from '../data/quiz';
 import QuestionCard from './QuestionCard';
+import LoadingScreen from './LoadingScreen';
 import ResultScreen from './ResultScreen';
+
+// How long the "analyzing" screen shows before the result (ms).
+const RESULT_DELAY = 2600;
 
 export default function QuizApp() {
   const [answers, setAnswers] = useState<Answers>({});
   const [currentStep, setCurrentStep] = useState(0);
+  const [resultReady, setResultReady] = useState(false);
   const advanceTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const branch = branchFromAnswers(answers);
@@ -19,6 +24,17 @@ export default function QuizApp() {
 
   const isResult = currentStep >= total;
   const question = isResult ? null : questions[currentStep];
+
+  // When the quiz completes, show a brief loading step before the result.
+  useEffect(() => {
+    if (!isResult) {
+      setResultReady(false);
+      return;
+    }
+    setResultReady(false);
+    const t = setTimeout(() => setResultReady(true), RESULT_DELAY);
+    return () => clearTimeout(t);
+  }, [isResult]);
 
   const goNext = () =>
     setCurrentStep((s) => Math.min(s + 1, total));
@@ -71,7 +87,11 @@ export default function QuizApp() {
     return (
       <div className="mx-auto w-full max-w-2xl px-4 py-10 sm:py-14">
         <div className="rounded-3xl bg-white p-6 shadow-lg ring-1 ring-olive-100 sm:p-10">
-          <ResultScreen scores={scores} onRestart={restart} />
+          {resultReady ? (
+            <ResultScreen scores={scores} onRestart={restart} />
+          ) : (
+            <LoadingScreen />
+          )}
         </div>
       </div>
     );
