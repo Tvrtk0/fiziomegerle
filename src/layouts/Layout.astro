@@ -8,11 +8,11 @@ interface Props {
   image?: string;
 }
 
-const SITE_NAME = 'Fizio Megerle';
+const SITE_NAME = 'Patrik Megerle';
 
 const {
   title = 'Otkrij koju vrstu boli imaš u leđima',
-  description = 'Ispuni kratki kviz i otkrij je li tvoja bol u leđima vjerojatno mišićna bol ili problem s diskom (diskus hernija) — te koji je sljedeći korak.',
+  description = 'Patrik Megerle — kviz za bol u leđima. Otkrij je li tvoja bol vjerojatno mišićna ili problem s diskom (diskus hernija) i koji je sljedeći korak.',
   image = '/og-image.jpg',
 } = Astro.props;
 
@@ -34,7 +34,12 @@ const jsonLd = {
   url: 'https://fiziomegerle.com/',
   inLanguage: 'hr',
   description,
-  sameAs: ['https://www.instagram.com/patrik_megerle/'],
+  author: {
+    '@type': 'Person',
+    name: 'Patrik Megerle',
+    url: 'https://fiziomegerle.com/',
+    sameAs: ['https://www.instagram.com/patrik_megerle/'],
+  },
 };
 ---
 
@@ -65,7 +70,7 @@ const jsonLd = {
     <meta property="og:image:height" content="630" />
     <meta
       property="og:image:alt"
-      content="Kviz: Otkrij koju vrstu boli imaš u leđima"
+      content="Patrik Megerle — kviz: Otkrij koju vrstu boli imaš u leđima"
     />
 
     <!-- Twitter -->
@@ -75,7 +80,7 @@ const jsonLd = {
     <meta name="twitter:image" content={imageURL} />
     <meta
       name="twitter:image:alt"
-      content="Kviz: Otkrij koju vrstu boli imaš u leđima"
+      content="Patrik Megerle — kviz: Otkrij koju vrstu boli imaš u leđima"
     />
 
     <script
