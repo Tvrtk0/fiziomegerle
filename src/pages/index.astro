@@ -1,7 +1,10 @@
 ---
+import { Image } from 'astro:assets';
 import Layout from '../layouts/Layout.astro';
 import QuizApp from '../components/QuizApp.tsx';
-import HeroImage from '../components/HeroImage.astro';
+// Hero photo: physiotherapist treating a patient's back.
+// Source: Pexels (free license, no attribution required). Photo by Krukphoto.com.
+import heroPhoto from '../assets/physiotherapist.jpg';
 ---
 
 <Layout>
@@ -24,9 +27,16 @@ import HeroImage from '../components/HeroImage.astro';
         mišićnoj boli ili problemu s diskom.
       </p>
 
-      <!-- Hero illustration -->
-      <div class="mt-8 w-full max-w-md">
-        <HeroImage />
+      <!-- Hero photo -->
+      <div class="mt-8 w-full max-w-lg">
+        <Image
+          src={heroPhoto}
+          alt="Fizioterapeut tretira pacijenta s bolovima u donjem dijelu leđa"
+          widths={[480, 768, 1024]}
+          sizes="(max-width: 640px) 92vw, 512px"
+          loading="eager"
+          class="aspect-[3/2] w-full rounded-3xl object-cover shadow-lg ring-1 ring-olive-200"
+        />
       </div>
 
       <button
