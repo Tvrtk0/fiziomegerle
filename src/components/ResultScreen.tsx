@@ -72,7 +72,7 @@ export default function ResultScreen({ scores, onRestart }: Props) {
 function DiscResult() {
   return (
     <section className="mt-4">
-      <h2 className="text-center text-3xl font-extrabold text-emerald-600 sm:text-4xl">
+      <h2 className="text-center text-3xl font-extrabold text-red-600 sm:text-4xl">
         Diskus hernija/problemi s diskom
       </h2>
       <div className="mt-6 space-y-4 text-base leading-relaxed text-olive-800">
@@ -101,7 +101,7 @@ function DiscResult() {
 function MuscleResult() {
   return (
     <section className="mt-4">
-      <h2 className="text-center text-3xl font-extrabold text-red-600 sm:text-4xl">
+      <h2 className="text-center text-3xl font-extrabold text-emerald-600 sm:text-4xl">
         Bol u mišićima
       </h2>
       <div className="mt-6 space-y-4 text-base leading-relaxed text-olive-800">
