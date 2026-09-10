@@ -1,6 +1,6 @@
 ---
 // fiziomegerle.com — naslovnica
-// Kviz je premjesten na /kviz (datoteka src/pages/kviz.astro)
+// Kviz je na /kviz (src/pages/kviz.astro)
 ---
 <!doctype html>
 <html lang="hr">
@@ -11,13 +11,11 @@
   <meta name="description" content="Fizioterapeut za bol u ledima i vratu. Besplatna pocetna faza rehabilitacije i kviz o bolovima u ledima.">
   <meta name="theme-color" content="#141619">
   <link rel="canonical" href="https://fiziomegerle.com/">
-
   <meta property="og:type" content="website">
   <meta property="og:title" content="Fizio Megerle">
   <meta property="og:description" content="Hernija ne znaci operaciju. Pocetna faza rehabilitacije, besplatno.">
   <meta property="og:url" content="https://fiziomegerle.com/">
   <meta property="og:locale" content="hr_HR">
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;800&family=Newsreader:opsz,wght@6..72,300;6..72,400;6..72,500&display=swap">
@@ -268,6 +266,52 @@
   @media (prefers-reduced-motion:reduce){
     *{transition:none !important;}
   }
+
+  /* ---------- MailerLite obrazac, u nasem ruhu ---------- */
+  .ml-form-embedContainer{margin-top:20px;}
+  .ml-form-embedBody form{margin:0;}
+  .ml-form-fieldRow{margin:0 0 11px;}
+  .ml-field-group{display:flex;flex-direction:column;gap:5px;}
+  .ml-field-group label{
+    font-family:var(--display);font-weight:600;font-size:.68rem;
+    letter-spacing:.13em;text-transform:uppercase;color:var(--sage);
+  }
+  .ml-form-embedBody input.form-control{
+    width:100%;box-sizing:border-box;
+    background:#171B22;color:var(--text);
+    border:1px solid var(--line);border-radius:2px;
+    font-family:var(--body);font-size:1rem;padding:11px 12px;
+  }
+  .ml-form-embedBody input.form-control:focus{
+    outline:2px solid var(--sage);outline-offset:1px;border-color:var(--sage-deep);
+  }
+  .ml-form-embedPermissions{margin:15px 0 0;}
+  .ml-form-embedPermissionsOptionsCheckbox label{
+    display:flex;align-items:flex-start;gap:10px;cursor:pointer;
+  }
+  .ml-form-embedPermissionsOptionsCheckbox input[type=checkbox]{
+    margin:3px 0 0;width:17px;height:17px;flex:none;accent-color:var(--sage);
+  }
+  .ml-form-embedPermissionsOptionsCheckbox .label-description{
+    font-size:.85rem;line-height:1.45;color:var(--muted);
+  }
+  .ml-form-embedSubmit{margin-top:16px;}
+  .ml-form-embedSubmit button.primary{
+    width:100%;border:0;border-radius:2px;cursor:pointer;
+    background:var(--sage);color:var(--ground);
+    font-family:var(--display);font-weight:700;font-size:.95rem;
+    letter-spacing:.02em;padding:13px;
+    transition:background .18s ease;
+  }
+  .ml-form-embedSubmit button.primary:hover{background:#B9C09B;}
+  .ml-form-embedSubmit button.loading{display:none;}
+  .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);}
+  .row-success h4{
+    font-family:var(--display);font-weight:800;font-size:1.2rem;
+    color:var(--sage);margin:0 0 8px;
+  }
+  .row-success p{margin:0;color:var(--text);font-size:.97rem;line-height:1.5;}
+  .route--primary:hover{transform:none;background:var(--sage-wash);}
 </style>
 </head>
 <body>
@@ -288,22 +332,68 @@
 
   <section class="routes" aria-label="Odaberi gdje si">
 
-    <a class="route route--primary" href="https://drive.google.com/file/d/1xW2zshpRKqhspf6MThmtpacexl17Y74f/view?usp=sharing">
+    <div class="route route--primary" id="preuzmi">
       <span class="q">Boli te sad?</span>
       <h2>Prvih 14 dana<span class="free">Besplatno</span></h2>
       <p>
         Početna faza rehabilitacije koju prolazim sa svojim klijentima
         u prva dva tjedna. Ako je upala izražena, ovdje se počinje.
       </p>
-      <span class="go">
-        Otvori
-        <svg width="15" height="11" viewBox="0 0 15 11" fill="none" aria-hidden="true">
-          <path d="M1 5.5h12M9 1.5l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </span>
-    </a>
 
-    <a class="route" href="/kviz">
+      <div id="mlb2-45806986" class="ml-form-embedContainer ml-subscribe-form ml-subscribe-form-45806986">
+        <div class="ml-form-embedWrapper embedForm">
+          <div class="ml-form-embedBody row-form">
+            <form class="ml-block-form" action="https://assets.mailerlite.com/jsonp/2628629/forms/198263471418115576/subscribe" data-code="" method="post" target="_blank">
+              <div class="ml-form-formContent">
+                <div class="ml-form-fieldRow">
+                  <div class="ml-field-group ml-field-name">
+                    <label for="ml-ime">Ime</label>
+                    <input id="ml-ime" aria-label="Ime" type="text" class="form-control" name="fields[name]" placeholder="" autocomplete="given-name">
+                  </div>
+                </div>
+                <div class="ml-form-fieldRow ml-last-item">
+                  <div class="ml-field-group ml-field-email ml-validate-email ml-validate-required">
+                    <label for="ml-mail">E-mail</label>
+                    <input id="ml-mail" aria-label="E-mail" aria-required="true" type="email" class="form-control" name="fields[email]" placeholder="" autocomplete="email">
+                  </div>
+                </div>
+              </div>
+
+              <div class="ml-form-embedPermissions">
+                <div class="ml-form-embedPermissionsContent default">
+                  <div class="ml-form-embedPermissionsOptions">
+                    <div class="ml-form-embedPermissionsOptionsCheckbox">
+                      <label>
+                        <input type="checkbox" name="gdpr[]" value="Email">
+                        <span class="label-description">Sla&#382;em se da mi Patrik Megerle po&#353;alje dokument na e-mail i povremeno korisne savjete o bolovima u le&#273;ima. Odjaviti se mogu bilo kad.</span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <input type="hidden" name="ml-submit" value="1">
+              <div class="ml-form-embedSubmit">
+                <button type="submit" class="primary">Pošalji mi dokument</button>
+                <button disabled="disabled" style="display:none;" type="button" class="loading">
+                  <div class="ml-form-embedSubmitLoad"></div><span class="sr-only">Šaljem…</span>
+                </button>
+              </div>
+              <input type="hidden" name="anticsrf" value="true">
+            </form>
+          </div>
+
+          <div class="ml-form-successBody row-success" style="display:none">
+            <div class="ml-form-successContent">
+              <h4>Provjeri sandučić</h4>
+              <p>Dokument ti stiže za koju minutu. Ako ga nema, pogledaj i mapu Promocije.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <a class="route" href="https://fiziomegerle.com/">
       <span class="q">Ne znaš što ti je?</span>
       <h2>Kviz o bolovima u leđima</h2>
       <p>
@@ -390,6 +480,14 @@
     </p>
   </footer>
 
+<script>
+  function ml_webform_success_45806986(){
+    var $ = window.ml_jQuery || window.jQuery;
+    $('.ml-subscribe-form-45806986 .row-success').show();
+    $('.ml-subscribe-form-45806986 .row-form').hide();
+  }
+</script>
+<script src="https://groot.mailerlite.com/js/w/webforms.min.js?v83147fa8ce2d95cb73ece7f28b469519" type="text/javascript"></script>
 </div>
 </body>
 </html>
