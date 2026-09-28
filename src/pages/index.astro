@@ -60,6 +60,16 @@
     gap:52px;
   }
 
+  /* ---------- nav ---------- */
+  .nav{border-bottom:1px solid var(--line);position:sticky;top:0;z-index:10;background:rgba(20,22,25,.92);backdrop-filter:blur(8px);}
+  .nav-in{max-width:52rem;margin:0 auto;padding:14px 22px;display:flex;align-items:center;justify-content:space-between;gap:16px;}
+  .brand{font-family:var(--display);font-weight:800;font-size:.95rem;letter-spacing:-.01em;text-decoration:none;color:var(--text);}
+  .brand span{color:var(--sage);}
+  .nav ul{list-style:none;margin:0;padding:0;display:flex;gap:18px;}
+  .nav a.l{font-family:var(--display);font-weight:600;font-size:.8rem;letter-spacing:.03em;text-decoration:none;color:var(--muted);}
+  .nav a.l:hover{color:var(--text);}
+  @media (max-width:420px){ .nav ul{gap:14px;} .brand{font-size:.88rem;} }
+
   /* ---------- eyebrow / labels ---------- */
   .eyebrow{
     font-family:var(--display);
@@ -315,6 +325,16 @@
 </style>
 </head>
 <body>
+<nav class="nav" aria-label="Glavna navigacija">
+  <div class="nav-in">
+    <a class="brand" href="/">Fizio <span>Megerle</span></a>
+    <ul>
+      <li><a class="l" href="/program/">Program</a></li>
+      <li><a class="l" href="/kviz/">Kviz</a></li>
+      <li><a class="l" href="/#preuzmi">Besplatno</a></li>
+    </ul>
+  </div>
+</nav>
 <div class="wrap">
 
   <header class="hero">
@@ -453,11 +473,11 @@
   <section class="work">
     <h3>Želiš proći sve četiri faze?</h3>
     <p>
-      Ispuni kratak upitnik da vidim gdje si. Javljam ti se osobno
-      i kažem ti što ti je sljedeći korak — bez obveze.
+      12-tjedni program za uredske radnike: cijeli put od smirivanja boli
+      do povratka punoj funkciji, uz mene. Dva paketa, 14 dana garancije.
     </p>
-    <a class="btn" href="https://forms.gle/iSmNp9EWRQMeRYUa7">
-      Ispuni upitnik
+    <a class="btn" href="/program/">
+      Pogledaj program
       <svg width="15" height="11" viewBox="0 0 15 11" fill="none" aria-hidden="true">
         <path d="M1 5.5h12M9 1.5l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>

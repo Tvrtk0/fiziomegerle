@@ -1,0 +1,615 @@
+---
+// fiziomegerle.com/program — prodajna stranica 12-tjednog programa
+// Ponuda slozena po "$100M Offers" (Hormozi): san, vjerojatnost, vrijeme, trud,
+// problemi -> rjesenja, paketi, garancija, ogranicenje mjesta.
+const FORM = 'https://forms.gle/iSmNp9EWRQMeRYUa7';
+---
+<!doctype html>
+<html lang="hr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>12-tjedni program za uredske radnike | Fizio Megerle</title>
+  <meta name="description" content="Plan korak po korak za bol u leđima i herniju diska: od smirivanja boli do povratka punoj funkciji, za 12 tjedana, kod kuće.">
+  <meta name="theme-color" content="#141619">
+  <link rel="canonical" href="https://fiziomegerle.com/program/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="12-tjedni program za uredske radnike">
+  <meta property="og:description" content="Sjediš 8 sati, a leđa ti to naplaćuju? 12 tjedana, 4 faze, plan fizioterapeuta.">
+  <meta property="og:url" content="https://fiziomegerle.com/program/">
+  <meta property="og:locale" content="hr_HR">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;800&family=Newsreader:opsz,wght@6..72,300;6..72,400;6..72,500&display=swap">
+<style is:global>
+  :root{
+    --ground:#141619;
+    --panel:#1E222A;
+    --panel-hi:#252A33;
+    --line:#2E343E;
+    --sage:#A7AF8A;
+    --sage-deep:#7B8464;
+    --sage-wash:#1C2119;
+    --text:#EDEDE7;
+    --muted:#949A9F;
+    --alert:#D9765C;
+    --alert-wash:#241A17;
+
+    --display:"Archivo","Helvetica Neue",Arial,sans-serif;
+    --body:"Newsreader",Georgia,"Times New Roman",serif;
+
+    --measure:34rem;
+    --wide:52rem;
+  }
+
+  *{box-sizing:border-box;}
+
+  body{
+    margin:0;
+    background:var(--ground);
+    color:var(--text);
+    font-family:var(--body);
+    font-size:17px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  a{color:inherit;}
+  html{scroll-padding-top:70px;}
+
+  /* ---------- nav ---------- */
+  .nav{
+    border-bottom:1px solid var(--line);
+    position:sticky;top:0;z-index:10;
+    background:rgba(20,22,25,.92);
+    backdrop-filter:blur(8px);
+  }
+  .nav-in{
+    max-width:var(--wide);margin:0 auto;
+    padding:14px 22px;
+    display:flex;align-items:center;justify-content:space-between;gap:16px;
+  }
+  .brand{
+    font-family:var(--display);font-weight:800;font-size:.95rem;
+    letter-spacing:-.01em;text-decoration:none;
+  }
+  .brand span{color:var(--sage);}
+  .nav ul{list-style:none;margin:0;padding:0;display:flex;gap:18px;}
+  .nav a.l{
+    font-family:var(--display);font-weight:600;font-size:.8rem;
+    letter-spacing:.03em;text-decoration:none;color:var(--muted);
+  }
+  .nav a.l:hover,.nav a.l[aria-current]{color:var(--text);}
+
+  /* ---------- layout ---------- */
+  .wrap{
+    max-width:var(--wide);
+    margin:0 auto;
+    padding:52px 22px 72px;
+    display:flex;flex-direction:column;gap:68px;
+  }
+  .narrow{max-width:var(--measure);}
+
+  .eyebrow{
+    font-family:var(--display);font-weight:600;
+    font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--sage);margin:0;
+  }
+
+  h2.sh{
+    font-family:var(--display);font-weight:800;
+    font-size:clamp(1.45rem,5vw,1.8rem);
+    line-height:1.12;letter-spacing:-.018em;
+    margin:0;text-wrap:balance;
+  }
+  .sec{display:flex;flex-direction:column;gap:22px;}
+  .sec > p{margin:0;color:var(--muted);}
+
+  /* ---------- hero ---------- */
+  .hero{display:flex;flex-direction:column;gap:20px;}
+  .hero h1{
+    font-family:var(--display);font-weight:800;
+    font-size:clamp(2.2rem,8vw,3.4rem);
+    line-height:1.02;letter-spacing:-.025em;
+    margin:0;text-wrap:balance;max-width:14ch;
+  }
+  .hero h1 em{font-style:normal;color:var(--sage);}
+  .lede{margin:0;color:var(--muted);font-size:1.1rem;max-width:var(--measure);}
+
+  .facts{
+    list-style:none;margin:4px 0 0;padding:0;
+    display:flex;flex-wrap:wrap;gap:8px;
+  }
+  .facts li{
+    font-family:var(--display);font-weight:600;font-size:.74rem;
+    letter-spacing:.04em;color:var(--text);
+    border:1px solid var(--line);background:var(--panel);
+    padding:6px 10px;
+  }
+
+  .ctas{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:6px;}
+
+  .btn{
+    display:inline-flex;align-items:center;gap:9px;
+    font-family:var(--display);font-weight:700;font-size:.92rem;
+    letter-spacing:.02em;
+    color:var(--ground);background:var(--sage);
+    text-decoration:none;
+    padding:13px 22px;
+    transition:background .18s ease,transform .18s ease;
+  }
+  .btn:hover,.btn:focus-visible{background:#B9C09B;transform:translateY(-1px);}
+  .btn:focus-visible,.ghost:focus-visible{outline:2px solid var(--sage);outline-offset:3px;}
+  .ghost{
+    font-family:var(--display);font-weight:600;font-size:.88rem;
+    color:var(--sage);text-decoration:none;padding:13px 4px;
+  }
+  .ghost:hover{color:#C2C9A6;}
+
+  /* ---------- pain list ---------- */
+  .pains{
+    list-style:none;margin:0;padding:0;
+    display:grid;gap:10px;
+  }
+  .pains li{
+    background:var(--panel);border:1px solid var(--line);
+    padding:14px 16px 14px 44px;position:relative;
+    font-size:1rem;line-height:1.45;
+  }
+  .pains li::before{
+    content:"";position:absolute;left:17px;top:21px;
+    width:12px;height:1.5px;background:var(--alert);
+  }
+
+  /* ---------- problem -> solution ---------- */
+  .fix{display:grid;gap:12px;}
+  .fix-row{
+    display:grid;gap:6px;
+    border-top:1px solid var(--line);padding-top:16px;
+  }
+  .fix-row .was{
+    font-family:var(--display);font-weight:600;font-size:.95rem;color:var(--muted);
+  }
+  .fix-row .was s{text-decoration-color:var(--alert);text-decoration-thickness:1.5px;}
+  .fix-row .now{margin:0;font-size:1.02rem;}
+  .fix-row .now b{font-family:var(--display);font-weight:700;color:var(--sage);font-size:.95rem;}
+
+  /* ---------- phases ---------- */
+  .spine{
+    list-style:none;margin:0;padding:0 0 0 30px;
+    position:relative;
+    display:flex;flex-direction:column;gap:26px;
+  }
+  .spine::before{
+    content:"";position:absolute;left:6px;top:9px;bottom:9px;
+    width:1px;background:var(--line);
+  }
+  .spine li{position:relative;}
+  .spine li::before{
+    content:"";position:absolute;left:-27px;top:7px;
+    width:13px;height:13px;border-radius:3px;
+    background:var(--ground);
+    border:1.5px solid var(--sage-deep);
+  }
+  .spine li:last-child::before{background:var(--sage);border-color:var(--sage);}
+  .ph-when{
+    font-family:var(--display);font-weight:600;
+    font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--sage-deep);display:block;margin-bottom:3px;
+  }
+  .ph-name{
+    font-family:var(--display);font-weight:700;
+    font-size:1.1rem;color:var(--text);display:block;margin-bottom:3px;
+  }
+  .ph-goal{color:var(--muted);font-size:.98rem;line-height:1.5;display:block;}
+  .ph-win{
+    display:block;margin-top:6px;font-size:.95rem;color:var(--text);
+  }
+  .ph-win::before{content:"Na kraju faze: ";font-family:var(--display);font-weight:600;font-size:.8rem;color:var(--sage);}
+
+  /* ---------- pricing ---------- */
+  .tiers{display:grid;gap:16px;align-items:start;}
+  @media (min-width:760px){ .tiers{grid-template-columns:1fr 1fr;} }
+
+  .tier{
+    background:var(--panel);border:1px solid var(--line);
+    padding:26px 22px 24px;
+    display:flex;flex-direction:column;gap:16px;
+    position:relative;
+  }
+  .tier--top{background:var(--sage-wash);border-color:var(--sage-deep);}
+  .tag{
+    position:absolute;top:-11px;left:22px;
+    font-family:var(--display);font-weight:700;
+    font-size:.64rem;letter-spacing:.13em;text-transform:uppercase;
+    color:var(--ground);background:var(--sage);padding:4px 9px;
+  }
+  .tier h3{
+    font-family:var(--display);font-weight:800;font-size:1.3rem;
+    margin:0;letter-spacing:-.01em;
+  }
+  .tier .for{margin:-8px 0 0;color:var(--muted);font-size:.95rem;line-height:1.45;}
+  .price{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;}
+  .price b{
+    font-family:var(--display);font-weight:800;font-size:2.4rem;
+    letter-spacing:-.03em;line-height:1;
+  }
+  .price span{color:var(--muted);font-size:.92rem;}
+  .inc{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:9px;}
+  .inc li{padding-left:24px;position:relative;font-size:.98rem;line-height:1.45;}
+  .inc li::before{
+    content:"";position:absolute;left:2px;top:7px;
+    width:9px;height:5px;
+    border-left:1.6px solid var(--sage);border-bottom:1.6px solid var(--sage);
+    transform:rotate(-45deg);
+  }
+  .inc li.plus{font-family:var(--display);font-weight:600;font-size:.82rem;letter-spacing:.03em;color:var(--sage);padding-left:0;}
+  .inc li.plus::before{display:none;}
+  .inc small{display:block;color:var(--muted);font-size:.86rem;}
+  .tier .btn{align-self:stretch;justify-content:center;}
+  .spots{margin:0;font-size:.85rem;color:var(--muted);text-align:center;}
+
+  .anchor{
+    margin:0;color:var(--muted);font-size:.95rem;
+    border-left:2px solid var(--line);padding-left:14px;
+    max-width:var(--measure);
+  }
+
+  /* ---------- guarantee ---------- */
+  .guarantee{
+    border:1px solid var(--sage-deep);
+    padding:26px 22px;
+    display:grid;gap:12px;
+    max-width:var(--measure);
+  }
+  .guarantee h2{
+    font-family:var(--display);font-weight:800;font-size:1.3rem;margin:0;letter-spacing:-.01em;
+  }
+  .guarantee p{margin:0;color:var(--muted);}
+  .guarantee p b{color:var(--text);font-weight:500;}
+
+  /* ---------- who ---------- */
+  .who{display:grid;gap:18px;align-items:start;}
+  @media (min-width:640px){ .who{grid-template-columns:120px 1fr;} }
+  .who img{width:120px;height:120px;border-radius:50%;object-fit:cover;border:1px solid var(--sage-deep);display:block;}
+  .who p{margin:0 0 12px;color:var(--muted);}
+  .who p:last-child{margin:0;}
+  .who p b{color:var(--text);font-weight:500;}
+
+  /* ---------- not for ---------- */
+  .notfor{
+    background:var(--alert-wash);
+    border-left:3px solid var(--alert);
+    padding:20px 20px 18px;
+    max-width:var(--measure);
+  }
+  .notfor h2{
+    font-family:var(--display);font-weight:800;
+    font-size:1.1rem;margin:0 0 10px;color:var(--alert);letter-spacing:-.01em;
+  }
+  .notfor ul{margin:0;padding-left:19px;}
+  .notfor li{margin-bottom:6px;font-size:.98rem;}
+  .notfor li:last-child{margin-bottom:0;}
+
+  /* ---------- faq ---------- */
+  .faq{display:flex;flex-direction:column;border-top:1px solid var(--line);max-width:var(--measure);}
+  .faq details{border-bottom:1px solid var(--line);}
+  .faq summary{
+    cursor:pointer;list-style:none;
+    font-family:var(--display);font-weight:600;font-size:1rem;
+    padding:16px 28px 16px 0;position:relative;
+  }
+  .faq summary::-webkit-details-marker{display:none;}
+  .faq summary::after{
+    content:"+";position:absolute;right:4px;top:13px;
+    font-size:1.3rem;color:var(--sage);font-weight:500;
+  }
+  .faq details[open] summary::after{content:"–";}
+  .faq summary:focus-visible{outline:2px solid var(--sage);outline-offset:2px;}
+  .faq p{margin:0 0 16px;color:var(--muted);font-size:.98rem;}
+
+  /* ---------- final ---------- */
+  .final{
+    border-top:1px solid var(--line);padding-top:40px;
+    display:flex;flex-direction:column;gap:16px;max-width:var(--measure);
+  }
+  .final p{margin:0;color:var(--muted);}
+
+  footer{
+    border-top:1px solid var(--line);
+    padding-top:26px;
+    display:flex;flex-direction:column;gap:14px;
+  }
+  .social{
+    display:inline-flex;align-items:center;gap:8px;
+    font-family:var(--display);font-weight:600;font-size:.92rem;
+    color:var(--sage);text-decoration:none;align-self:flex-start;
+  }
+  .fine{margin:0;font-size:.82rem;line-height:1.55;color:var(--muted);max-width:var(--measure);}
+
+  @media (max-width:420px){
+    .nav ul{gap:14px;}
+    .brand{font-size:.88rem;}
+  }
+  @media (prefers-reduced-motion:reduce){ *{transition:none !important;} }
+</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="Glavna navigacija">
+  <div class="nav-in">
+    <a class="brand" href="/">Fizio <span>Megerle</span></a>
+    <ul>
+      <li><a class="l" href="/program/" aria-current="page">Program</a></li>
+      <li><a class="l" href="/kviz/">Kviz</a></li>
+      <li><a class="l" href="/#preuzmi">Besplatno</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main class="wrap">
+
+  <!-- 1. SAN: ime po MAGIC formuli + krajnji ishod -->
+  <header class="hero">
+    <p class="eyebrow">Online program &middot; vodi ga fizioterapeut</p>
+    <h1>12-tjedni program za <em>uredske radnike</em></h1>
+    <p class="lede">
+      Sjediš 8 sati, a leđa ti to naplaćuju? Ovo je plan korak po korak:
+      od smirivanja boli do toga da opet sjediš, ustaješ iz auta i treniraš
+      bez straha od svog tijela.
+    </p>
+    <ul class="facts" aria-label="Ukratko">
+      <li>12 tjedana</li>
+      <li>4 faze</li>
+      <li>30–40 min po treningu</li>
+      <li>Kod kuće</li>
+      <li>Video za svaku vježbu</li>
+    </ul>
+    <div class="ctas">
+      <a class="btn" href="#paketi">
+        Pogledaj pakete
+        <svg width="15" height="11" viewBox="0 0 15 11" fill="none" aria-hidden="true"><path d="M1 5.5h12M9 1.5l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a class="ghost" href="#faze">Kako izgleda 12 tjedana</a>
+    </div>
+  </header>
+
+  <!-- 2. AVATAR: da se prepozna -->
+  <section class="sec narrow">
+    <h2 class="sh">Zvuči poznato?</h2>
+    <ul class="pains">
+      <li>Ujutro si ukočen, a oko tri popodne počne probadati donji dio leđa.</li>
+      <li>Iz auta ili sa stolice ustaješ „u dva dijela“.</li>
+      <li>Imaš nalaz magnetne s hernijom i bojiš se svakog saginjanja.</li>
+      <li>Probao si vježbe s YouTubea. Jedan dan bolje, drugi gore.</li>
+      <li>Rekli su ti „odmaraj i pij tablete“. Odmaraš, piješ, a ništa se ne mijenja.</li>
+    </ul>
+  </section>
+
+  <!-- 3. VJEROJATNOST: zasto dosad nije islo i sto je drukcije -->
+  <section class="sec narrow">
+    <h2 class="sh">Nije problem u tebi. Problem je što nisi imao redoslijed.</h2>
+    <div class="fix">
+      <div class="fix-row">
+        <span class="was"><s>Nasumične vježbe s interneta</s></span>
+        <p class="now"><b>Četiri faze, strogo po redu.</b> Svaka vježba ima svoje mjesto i razlog zašto je baš tu.</p>
+      </div>
+      <div class="fix-row">
+        <span class="was"><s>Ili potpuni odmor, ili guranje kroz bol</s></span>
+        <p class="now"><b>Jasna granica boli.</b> Znaš koliko smije boljeti i što napraviti kad zaboli više.</p>
+      </div>
+      <div class="fix-row">
+        <span class="was"><s>„Kad mogu dalje?“ Nitko ti ne zna reći</s></span>
+        <p class="now"><b>Kriteriji za prelazak.</b> U sljedeću fazu ideš kad ih ispuniš, ne kad ti se čini da je vrijeme.</p>
+      </div>
+      <div class="fix-row">
+        <span class="was"><s>Sam si i ne znaš radiš li dobro</s></span>
+        <p class="now"><b>Fizioterapeut s tobom.</b> Check-in na svakoj fazi, a u Premiumu svaki tjedan.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. VRIJEME: sto dobivas i kad -->
+  <section class="sec narrow" id="faze">
+    <h2 class="sh">Kako izgleda 12 tjedana</h2>
+    <p>Svaka faza ima jedan cilj. Tek kad ga ostvariš, ideš dalje.</p>
+    <ol class="spine">
+      <li>
+        <span class="ph-when">Tjedan 1–2</span>
+        <span class="ph-name">Smirivanje boli</span>
+        <span class="ph-goal">Hodanje, disanje i ekstenzija. Smirujemo iritaciju živca bez potpunog mirovanja.</span>
+        <span class="ph-win">bol ti više ne diktira dan.</span>
+      </li>
+      <li>
+        <span class="ph-when">Tjedan 3–4</span>
+        <span class="ph-name">Vraćanje pokreta</span>
+        <span class="ph-goal">Kontrola trupa, gluteusi, mobilnost kukova. Pokret se vraća, a strah od savijanja pada.</span>
+        <span class="ph-win">sjediš i ustaješ bez razmišljanja o leđima.</span>
+      </li>
+      <li>
+        <span class="ph-when">Tjedan 5–9</span>
+        <span class="ph-name">Izgradnja snage</span>
+        <span class="ph-goal">Čučanj, pregib u kuku, snaga leđa i nogu. Opseg pokreta raste iz tjedna u tjedan.</span>
+        <span class="ph-win">tijelo koje izdrži cijeli radni dan.</span>
+      </li>
+      <li>
+        <span class="ph-when">Tjedan 10–12</span>
+        <span class="ph-name">Povratak funkciji</span>
+        <span class="ph-goal">Rad s bučicama, iskoraci, mrtvo dizanje na jednoj nozi. Leđa pripremamo na stvarni život.</span>
+        <span class="ph-win">treniraš, nosiš i podižeš bez straha, i znaš što raditi da se ne vrati.</span>
+      </li>
+    </ol>
+  </section>
+
+  <!-- 5. PONUDA: value stack + dva paketa -->
+  <section class="sec" id="paketi">
+    <div class="narrow" style="display:flex;flex-direction:column;gap:12px;">
+      <p class="eyebrow">Paketi</p>
+      <h2 class="sh">Odaberi koliko me trebaš uz sebe</h2>
+    </div>
+
+    <div class="tiers">
+      <article class="tier">
+        <h3>Osnovni</h3>
+        <p class="for">Za tebe koji si samostalan i trebaš jasan plan kojeg se držiš.</p>
+        <div class="price"><b>400 €</b><span>jednokratno &middot; ≈ 33 € tjedno</span></div>
+        <ul class="inc">
+          <li>Kompletan 12-tjedni plan u aplikaciji<small>sve 4 faze, trening po trening</small></li>
+          <li>Video za svaku vježbu<small>vidiš točno kako se radi</small></li>
+          <li>Kriteriji za prelazak u sljedeću fazu</li>
+          <li>Pravila što raditi kad zaboli</li>
+          <li>Check-in sa mnom na početku svake faze<small>4 check-ina: pregledam kako ide i prilagodim plan</small></li>
+        </ul>
+        <a class="btn" href={FORM}>Prijavi se za Osnovni</a>
+      </article>
+
+      <article class="tier tier--top">
+        <span class="tag">Najbrži put</span>
+        <h3>Premium</h3>
+        <p class="for">Za tebe koji želiš da netko prati svaki tvoj tjedan i ne ostavi te da pogađaš.</p>
+        <div class="price"><b>600 €</b><span>jednokratno &middot; 50 € tjedno</span></div>
+        <ul class="inc">
+          <li class="plus">Sve iz Osnovnog, plus:</li>
+          <li>Tjedni check-in sa mnom<small>12 check-ina, plan se prilagođava tebi svaki tjedan</small></li>
+          <li>Video korekcija tehnike<small>snimiš vježbu, ja ti kažem što popraviti</small></li>
+          <li>Direktna podrška na WhatsAppu<small>pitaš kad zapne, ne čekaš idući check-in</small></li>
+          <li>Modul „Prehrana za oporavak“<small>kilaža, proteini i upala: što prehrana ima s tvojim leđima</small></li>
+          <li>Pregled tvog dnevnika prehrane</li>
+        </ul>
+        <a class="btn" href={FORM}>Prijavi se za Premium</a>
+        <p class="spots">Premium: najviše 5 novih ljudi mjesečno, jer svakog pratim osobno.</p>
+      </article>
+    </div>
+
+    <p class="anchor">
+      Jedan termin kod privatnog fizioterapeuta košta 40–60 €. Za cijenu
+      otprilike osam termina ovdje dobivaš cijelih 12 tjedana: plan, mene i
+      redoslijed koji vodi do kraja.
+    </p>
+  </section>
+
+  <!-- 6. RIZIK: garancija -->
+  <section class="guarantee" aria-labelledby="g-h">
+    <p class="eyebrow">Garancija</p>
+    <h2 id="g-h">Probaj 14 dana. Ako nije za tebe, vraćam novac.</h2>
+    <p>
+      Odradi prva dva tjedna po planu i zabilježi treninge u aplikaciji.
+      Ako i dalje misliš da ovo nije za tebe, javi mi se i <b>vraćam ti cijeli iznos</b>.
+      Bez objašnjavanja.
+    </p>
+    <p>Rizik je na meni, ne na tebi.</p>
+  </section>
+
+  <!-- 7. VJEROJATNOST: tko stoji iza -->
+  <section class="sec narrow">
+    <h2 class="sh">Tko te vodi</h2>
+    <div class="who">
+      <img src="/patrik.jpg" alt="Patrik Megerle" width="120" height="120" loading="lazy">
+      <div>
+        <p><b>Ja sam Patrik, fizioterapeut.</b> Bavim se leđima, vratom i hernijama diska.</p>
+        <p>
+          Na Instagramu svaki dan objašnjavam što se zapravo događa s tvojim
+          leđima. Ovaj program je taj isti redoslijed, složen u 12 tjedana
+          i spakiran tako da ga možeš raditi kod kuće.
+        </p>
+        <p>
+          Ne obećavam čuda. Obećavam plan, objašnjenje za svaku vježbu
+          i mene kad zapne.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. KVALIFIKACIJA: za koga nije -->
+  <section class="notfor" aria-labelledby="nf-h">
+    <h2 id="nf-h">Ovaj program nije za tebe ako:</h2>
+    <ul>
+      <li>imaš gubitak kontrole mokraćnog mjehura ili crijeva, progresivnu slabost noge ili utrnulost oko trtice. Tada se odmah javi liječniku.</li>
+      <li>tražiš masažu ili pasivnu terapiju. Ovdje ti radiš, a ja te vodim.</li>
+      <li>ne možeš odvojiti 30–40 minuta za trening.</li>
+      <li>si nedavno operiran ili imaš svježu ozljedu. Prvo razgovaraj sa svojim liječnikom.</li>
+    </ul>
+  </section>
+
+  <!-- 9. PRIGOVORI -->
+  <section class="sec">
+    <h2 class="sh">Česta pitanja</h2>
+    <div class="faq">
+      <details>
+        <summary>Ne radim u uredu. Je li ovo za mene?</summary>
+        <p>
+          Da. Program je napravljen za bol u križima i herniju diska. Zove se
+          „za uredske radnike“ jer je sjedenje najčešći razlog zbog kojeg mi se
+          ljudi javljaju, ali radi i ako voziš, stojiš u smjeni ili fizički radiš.
+        </p>
+      </details>
+      <details>
+        <summary>Imam herniju na magnetnoj. Smijem li vježbati?</summary>
+        <p>
+          U većini slučajeva ne samo da smiješ, nego trebaš. Hernija ne znači
+          operaciju. Ako imaš neki od znakova iz crvenog okvira iznad, prvo idi liječniku.
+        </p>
+      </details>
+      <details>
+        <summary>Trebam li teretanu ili opremu?</summary>
+        <p>
+          Ne. Prve tri faze radiš s prostirkom kod kuće. Za zadnju fazu dobro
+          dođe par bučica.
+        </p>
+      </details>
+      <details>
+        <summary>Što ako me tijekom programa zaboli?</summary>
+        <p>
+          U programu imaš jasna pravila koliko smije boljeti i što napraviti kad
+          zaboli više. U Premiumu mi se javiš na WhatsApp i riješimo to odmah.
+        </p>
+      </details>
+      <details>
+        <summary>Kako izgleda prijava i plaćanje?</summary>
+        <p>
+          Ispuniš kratak upitnik. Javim ti se osobno, provjerimo je li program
+          za tebe i koji paket ima smisla. Tek onda dobiješ podatke za uplatu
+          i pristup aplikaciji.
+        </p>
+      </details>
+      <details>
+        <summary>Mogu li prvo probati nešto besplatno?</summary>
+        <p>
+          Možeš. <a href="/#preuzmi">„Prvih 14 dana“</a> je besplatna početna faza
+          s testom. Ako ti pomogne, program je nastavak točno od te točke.
+        </p>
+      </details>
+    </div>
+  </section>
+
+  <!-- 10. CTA -->
+  <section class="final">
+    <h2 class="sh">Prvi korak su dvije minute</h2>
+    <p>
+      Ispuni upitnik. Javljam ti se osobno i kažem ti koji paket ima smisla,
+      ili ti iskreno kažem da ti ne treba nijedan.
+    </p>
+    <a class="btn" href={FORM} style="align-self:flex-start">
+      Ispuni upitnik
+      <svg width="15" height="11" viewBox="0 0 15 11" fill="none" aria-hidden="true"><path d="M1 5.5h12M9 1.5l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </section>
+
+  <footer>
+    <a class="social" href="https://www.instagram.com/patrik_megerle/">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <rect x="2.5" y="2.5" width="19" height="19" rx="5" stroke="currentColor" stroke-width="1.7"/>
+        <circle cx="12" cy="12" r="4.2" stroke="currentColor" stroke-width="1.7"/>
+        <circle cx="17.6" cy="6.4" r="1.2" fill="currentColor"/>
+      </svg>
+      @patrik_megerle
+    </a>
+    <p class="fine">
+      Program je edukativan i ne zamjenjuje liječnički pregled. Ako se simptomi
+      pogoršavaju ili se pojave znakovi iz crvenog okvira, javi se liječniku.
+    </p>
+  </footer>
+
+</main>
+</body>
+</html>
