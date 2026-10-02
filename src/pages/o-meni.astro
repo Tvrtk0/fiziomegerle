@@ -1,0 +1,226 @@
+---
+// fiziomegerle.com/o-meni
+import Site from '../layouts/Site.astro';
+import Photo from '../components/Photo.astro';
+
+// Fotke su u public/img/. Prazno = iscrtkano mjesto.
+const PORTRAIT = '/img/portret.jpg';  // glavna fotka
+const TRAINING = '/img/zgib.jpg';     // trening
+const TRAINING2 = '/img/sklek.jpg';   // trening
+const FOOTBALL = '/img/nogomet.jpg';  // izrez iz momcadske fotke, Patrik u sredini
+---
+<Site
+  title="O meni | Patrik Megerle, fizioterapeut"
+  description="Tko je Patrik Megerle: fizioterapeut za bol u leđima, vratu i herniju diska. Moja priča, kako radim i zašto."
+  path="/o-meni/"
+  crumb="O meni"
+  lead="Fizioterapeut za leđa, vrat i herniju diska. Ovo je priča iza profila."
+>
+<style>
+  .intro{display:grid;gap:44px;align-items:start;}
+  @media (min-width:900px){ .intro{grid-template-columns:.9fr 1.1fr;gap:72px;} }
+  .intro .photo{border-radius:18px;overflow:hidden;}
+  @media (min-width:900px){ .intro .photo{position:sticky;top:100px;} }
+  .story p{margin:0 0 18px;font-size:1.05rem;}
+  .story .h-md{margin:44px 0 16px;}
+  .story .h-md:first-of-type{margin-top:26px;}
+  .quote{
+    margin:34px 0;padding:6px 0 6px 24px;border-left:4px solid var(--green);
+    font-family:var(--head);font-size:clamp(1.9rem,4.5vw,2.4rem);line-height:1.05;
+    text-transform:uppercase;letter-spacing:.03em;
+  }
+
+  .edu{list-style:none;margin:0 0 24px;padding:0 0 0 26px;border-left:2px solid var(--line);display:grid;gap:22px;}
+  .edu li{position:relative;}
+  .edu li::before{
+    content:"";position:absolute;left:-33px;top:6px;width:12px;height:12px;border-radius:50%;
+    background:#fff;border:2px solid var(--green);
+  }
+  .edu li:first-child::before{background:var(--green);}
+  .edu .yr{display:block;font-family:var(--head);font-size:1.15rem;letter-spacing:.14em;color:var(--green);line-height:1;}
+  .edu b{display:block;font-family:var(--head);font-size:1.6rem;font-weight:600;letter-spacing:.03em;text-transform:uppercase;line-height:1.05;margin:4px 0 2px;}
+  .edu span:last-child{color:var(--text-soft);font-size:.95rem;}
+
+  .facts{display:grid;gap:18px;}
+  @media (min-width:760px){ .facts{grid-template-columns:repeat(3,1fr);} }
+  .fact{border:1px solid var(--line-dark);border-radius:16px;padding:28px 24px;}
+  .fact .h-sm{color:var(--sage);margin-bottom:10px;}
+  .fact p{margin:0;color:var(--on-dark-soft);font-size:.96rem;}
+
+  .ways{display:grid;gap:26px;counter-reset:w;}
+  @media (min-width:760px){ .ways{grid-template-columns:1fr 1fr;gap:34px 56px;} }
+  .way{border-top:2px solid var(--line);padding-top:20px;}
+  .way::before{
+    counter-increment:w;content:"0" counter(w);
+    font-family:var(--head);font-size:2.6rem;font-weight:600;color:var(--green);line-height:1;display:block;margin-bottom:6px;
+  }
+  .way p{margin:8px 0 0;color:var(--text-soft);}
+
+  .gallery{display:grid;gap:16px;}
+  .gallery :global(img){border-radius:14px;}
+  /* trening i teren: na mobitelu traka koja se povlaci prstom */
+  .g-sport{grid-auto-flow:column;grid-auto-columns:72%;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:6px;scrollbar-width:thin;}
+  .g-sport > :global(*){scroll-snap-align:start;}
+  @media (min-width:760px){ .g-sport{grid-auto-flow:row;grid-template-columns:repeat(3,1fr);overflow:visible;} }
+
+  .cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:10px;}
+</style>
+
+  <section class="sec">
+    <div class="container intro">
+      <div class="photo">
+        <Photo src={PORTRAIT} alt="Patrik Megerle" label="tvoj portret, uspravno" ratio="4/5" pos="center 35%" />
+      </div>
+      <div class="story">
+        <p class="kicker">Bok, ja sam Patrik</p>
+        <h2 class="h-lg">Fizioterapeut. Leđa, vrat i hernije diska.</h2>
+        <hr class="rule">
+
+        <h3 class="h-md">Moja priča</h3>
+        <p>
+          Sportom se bavim od svoje šeste godine i od tada nisam stao. Počeo sam
+          s plivanjem i taekwondoom, a onda sam prešao na nogomet, koji igram i
+          danas. Uz nogomet sam trenirao kickboks i još ga ubacim jednom do dva puta
+          tjedno. U teretani radim na sebi više od 10 godina.
+        </p>
+        <p>
+          Nakon faksa sam godinu dana radio u Općoj bolnici Bjelovar. Tamo sam
+          vidio koliko je rehabilitacija preko HZZO-a ograničena: premalo vremena,
+          premalo pažnje i previše tretmana koji ne mijenjaju ništa u tijelu.
+          To me potaknulo da krenem samostalno i ljudima dam najbolju pomoć koju
+          mogu, bez prodavanja magle.
+        </p>
+        <p>
+          Zatim sam skoro godinu dana radio kao profesor tjelesnog s djecom s
+          autizmom. Poligoni, igre, motorika i koordinacija, sve na improvizaciju.
+          Naučio sam prilagoditi svaki pokret osobi ispred sebe, i naučio sam
+          koliko trebamo biti zahvalni na onome što imamo.
+        </p>
+        <p>
+          Zadnjih godinu dana radim online rehabilitaciju. Živim ono što
+          propovijedam: zdrav život i aktivnost svaki dan. Sve što radim sam,
+          pokušavam prenijeti na druge kao primjer.
+        </p>
+
+        <p class="quote">Hernija ne znači operaciju. Znači da trebaš plan.</p>
+
+        <h3 class="h-md">Iskustvo</h3>
+        <ol class="edu">
+          <li>
+            <span class="yr">Danas</span>
+            <b>Online rehabilitacija</b>
+            <span>Samostalno · programi za leđa, vrat i herniju diska</span>
+          </li>
+          <li>
+            <span class="yr">~1 godina</span>
+            <b>Profesor tjelesnog</b>
+            <span>Rad s djecom s autizmom · motorika, koordinacija, poligoni</span>
+          </li>
+          <li>
+            <span class="yr">1 godina</span>
+            <b>Fizioterapeut</b>
+            <span>Opća bolnica Bjelovar</span>
+          </li>
+        </ol>
+
+        <h3 class="h-md">Obrazovanje</h3>
+        <ol class="edu">
+          <li>
+            <span class="yr">2019 – 2022</span>
+            <b>Stručni prvostupnik fizioterapije</b>
+            <span>Sveučilište Sjever, Varaždin · završni rad: rehabilitacija nakon ugradnje endoproteze kuka</span>
+          </li>
+          <li>
+            <span class="yr">2015 – 2019</span>
+            <b>Farmaceutski tehničar</b>
+            <span>Medicinska škola Bjelovar</span>
+          </li>
+        </ol>
+        <p>
+          Prije fizioterapije četiri sam godine učio o lijekovima. Zato znam
+          što tablete protiv bolova mogu, a što ne mogu: mogu utišati bol,
+          ali ne mogu vratiti snagu i povjerenje u vlastita leđa. To radi pokret.
+        </p>
+
+        <h3 class="h-md">Zašto radim online</h3>
+        <p>
+          Većini ljudi s bolnim leđima ne treba još jedna masaža, nego netko
+          tko im objasni što se događa i da im redoslijed vježbi koji mogu
+          raditi kod kuće. Online to mogu dati ljudima iz cijele Hrvatske,
+          ne samo onima koji žive blizu ambulante.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec dark">
+    <div class="container">
+      <div class="sec-head">
+        <p class="kicker">Ukratko</p>
+        <h2 class="h-lg">Što trebaš znati o meni</h2>
+        <hr class="rule">
+      </div>
+      <div class="facts">
+        <div class="fact">
+          <h3 class="h-sm">Specijalizacija</h3>
+          <p>Bol u križima, lumboishialgija, hernija diska, bol u vratu i držanje.</p>
+        </div>
+        <div class="fact">
+          <h3 class="h-sm">Pristup</h3>
+          <p>Aktivan oporavak: pokret, snaga i razumijevanje. Bez tableta kao rješenja i bez straha od pokreta.</p>
+        </div>
+        <div class="fact">
+          <h3 class="h-sm">Izvan posla</h3>
+          <p>Nogomet od djetinjstva, kickboks rekreativno i više od 10 godina u teretani. Radim ono što propovijedam.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="container">
+      <div class="sec-head">
+        <p class="kicker">Kako radim</p>
+        <h2 class="h-lg">Četiri pravila koja ne mijenjam</h2>
+        <hr class="rule">
+      </div>
+      <div class="ways">
+        <div class="way">
+          <h3 class="h-sm">Prvo razumiješ, onda vježbaš</h3>
+          <p>Uz svaku vježbu dobiješ zašto je tu. Kad znaš što radiš, ne bojiš se.</p>
+        </div>
+        <div class="way">
+          <h3 class="h-sm">Redoslijed je sve</h3>
+          <p>Četiri faze, jedna za drugom. Preskakanje koraka je najčešći razlog zašto se bol vraća.</p>
+        </div>
+        <div class="way">
+          <h3 class="h-sm">Ni potpuni odmor, ni forsiranje</h3>
+          <p>Krećeš se, ali pratiš opterećenje. Točno znaš koliko smije boljeti.</p>
+        </div>
+        <div class="way">
+          <h3 class="h-sm">Iskren sam kad ti ne trebam</h3>
+          <p>Ako imaš crvene zastavice, šaljem te liječniku, a ne u program.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec sec--tint">
+    <div class="container">
+      <div class="sec-head">
+        <p class="kicker">Iza kulisa</p>
+        <h2 class="h-lg">Trening i teren</h2>
+        <hr class="rule">
+      </div>
+      <div class="gallery g-sport">
+        <Photo src={TRAINING} alt="Patrik radi zgibove" label="trening" ratio="4/5" pos="center 40%" />
+        <Photo src={TRAINING2} alt="Patrik radi sklekove na vanjskom vježbalištu" label="trening" ratio="4/5" pos="center 45%" />
+        <Photo src={FOOTBALL} alt="Patrik u dresu svoje nogometne momčadi" label="nogomet" ratio="4/5" pos="center 30%" />
+      </div>
+      <div class="cta" style="margin-top:44px;">
+        <a class="btn" href="/program/">Online programi</a>
+        <a class="btn btn--line" style="color:var(--green);" href="/kontakt/">Javi mi se</a>
+      </div>
+    </div>
+  </section>
+</Site>

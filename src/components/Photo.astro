@@ -1,0 +1,17 @@
+---
+// Fotka ili, dok je nema, iscrtkano mjesto s opisom koja fotka tu ide.
+// Kad fotka stigne: stavi je u public/img/ i proslijedi src="/img/ime.jpg".
+interface Props {
+  src?: string;
+  alt: string;
+  label: string;       // sto treba biti na fotki (vidi se samo dok src ne postoji)
+  ratio?: string;      // npr. '4/5'
+  pos?: string;        // object-position, npr. 'center 30%'
+  class?: string;
+  dark?: boolean;
+}
+const { src, alt, label, ratio = '4/5', pos = 'center', class: cls, dark } = Astro.props;
+---
+{src
+  ? <img src={src} alt={alt} class={cls} style={`aspect-ratio:${ratio};object-fit:cover;object-position:${pos};width:100%;`} loading="lazy">
+  : <div class:list={['ph', cls, { 'ph--dark': dark }]} style={`aspect-ratio:${ratio};`} role="img" aria-label={alt}>Foto: {label}</div>}

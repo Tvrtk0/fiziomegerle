@@ -1,0 +1,289 @@
+---
+// Zajednicki izgled za Pocetnu, O meni, Online programe i Kontakt.
+// Kviz (/kviz) ima svoj Layout.astro i ne koristi ovo.
+interface Props {
+  title: string;
+  description: string;
+  path: string;          // npr. '/o-meni/' — za canonical i aktivni link u izborniku
+  crumb?: string;        // ako postoji, iscrtava tamni naslovni pojas s "Početna / crumb"
+  lead?: string;         // podnaslov u tom pojasu
+}
+const { title, description, path, crumb, lead } = Astro.props;
+const canonical = new URL(path, Astro.site).href;
+
+const links = [
+  { href: '/', label: 'Početna' },
+  { href: '/o-meni/', label: 'O meni' },
+  { href: '/program/', label: 'Online programi' },
+  { href: '/kviz/', label: 'Kviz' },
+  { href: '/kontakt/', label: 'Kontakt' },
+];
+---
+<!doctype html>
+<html lang="hr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{title}</title>
+  <meta name="description" content={description}>
+  <meta name="theme-color" content="#11151A">
+  <link rel="canonical" href={canonical}>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content={title}>
+  <meta property="og:description" content={description}>
+  <meta property="og:url" content={canonical}>
+  <meta property="og:image" content="https://fiziomegerle.com/og-image.jpg">
+  <meta property="og:locale" content="hr_HR">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Teko:wght@400;500;600;700&family=Open+Sans:wght@400;500;600;700&display=swap">
+  <style is:global>
+    :root{
+      --ink:#11151A;        /* tamni dijelovi */
+      --ink-2:#1A2027;
+      --paper:#FFFFFF;      /* svijetli dijelovi */
+      --paper-2:#F3F4F0;
+      --line:#E3E5DF;
+      --line-dark:#2A323B;
+      --text:#1B2024;
+      --text-soft:#5E666C;
+      --on-dark:#FFFFFF;
+      --on-dark-soft:#A9B0B5;
+      --green:#3F6B52;      /* gumbi */
+      --green-hi:#4C7F62;
+      --sage:#A7AF8A;       /* naglasak na tamnom */
+      --alert:#C8563B;
+      --alert-wash:#FBEFEB;
+
+      --head:"Teko","Oswald","Arial Narrow",sans-serif;
+      --body:"Open Sans","Helvetica Neue",Arial,sans-serif;
+      --max:1140px;
+    }
+    *{box-sizing:border-box;}
+    html{scroll-behavior:smooth;scroll-padding-top:120px;}
+    body{
+      margin:0;background:var(--paper);color:var(--text);
+      font-family:var(--body);font-size:16px;line-height:1.7;
+      -webkit-font-smoothing:antialiased;
+    }
+    img{max-width:100%;display:block;}
+    a{color:inherit;}
+    .container{max-width:var(--max);margin:0 auto;padding:0 20px;}
+
+    /* ---------- naslovi ---------- */
+    .h-xl,.h-lg,.h-md,.h-sm{font-family:var(--head);text-transform:uppercase;margin:0;line-height:.95;letter-spacing:.04em;}
+    .h-xl{font-size:clamp(3.2rem,11vw,6.4rem);font-weight:700;letter-spacing:.05em;}
+    .h-lg{font-size:clamp(2.4rem,6.5vw,3.6rem);font-weight:600;}
+    .h-md{font-size:clamp(1.8rem,4.5vw,2.3rem);font-weight:600;}
+    .h-sm{font-size:1.55rem;font-weight:600;line-height:1;}
+    .kicker{
+      font-family:var(--head);font-size:1.15rem;font-weight:500;
+      letter-spacing:.18em;text-transform:uppercase;color:var(--green);margin:0 0 6px;
+    }
+    .dark .kicker{color:var(--sage);}
+    .rule{width:56px;height:3px;background:var(--green);border:0;margin:18px 0 0;}
+    .center{text-align:center;}
+    .center .rule{margin-left:auto;margin-right:auto;}
+    .soft{color:var(--text-soft);}
+
+    /* ---------- sekcije ---------- */
+    .sec{padding:88px 0;}
+    .sec--tint{background:var(--paper-2);}
+    .dark{background:var(--ink);color:var(--on-dark);}
+    .dark .soft{color:var(--on-dark-soft);}
+    .sec-head{max-width:640px;margin:0 0 48px;}
+    .sec-head.center{margin-left:auto;margin-right:auto;}
+    .sec-head p{margin:18px 0 0;}
+
+    /* ---------- gumbi ---------- */
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:10px;
+      font-family:var(--head);font-size:1.3rem;font-weight:500;
+      letter-spacing:.08em;text-transform:uppercase;line-height:1;
+      padding:17px 34px 14px;border-radius:999px;
+      background:var(--green);color:#fff;text-decoration:none;border:2px solid var(--green);
+      transition:background .2s ease,border-color .2s ease,transform .2s ease;
+      cursor:pointer;
+    }
+    .btn:hover{background:var(--green-hi);border-color:var(--green-hi);transform:translateY(-2px);}
+    .btn--line{background:transparent;border-color:currentColor;}
+    .btn--line:hover{background:rgba(255,255,255,.08);border-color:currentColor;}
+    .btn:focus-visible,.nav a:focus-visible{outline:2px solid var(--sage);outline-offset:3px;}
+
+    /* ---------- izbornik ---------- */
+    .nav{
+      position:fixed;top:0;left:0;right:0;z-index:50;
+      transition:background .25s ease,box-shadow .25s ease;
+    }
+    .nav.solid,.nav.always{background:rgba(17,21,26,.96);box-shadow:0 1px 0 var(--line-dark);}
+    .nav-in{display:flex;align-items:center;justify-content:space-between;height:74px;}
+    .logo{
+      font-family:var(--head);font-weight:600;font-size:1.7rem;letter-spacing:.08em;
+      text-transform:uppercase;color:#fff;text-decoration:none;line-height:1;padding-top:4px;
+    }
+    .logo span{color:var(--sage);}
+    .nav ul{list-style:none;margin:0;padding:0;display:flex;gap:30px;}
+    .nav ul a{
+      font-family:var(--head);font-size:1.2rem;font-weight:500;letter-spacing:.12em;
+      text-transform:uppercase;color:#fff;text-decoration:none;opacity:.85;
+      padding:6px 0 3px;border-bottom:2px solid transparent;
+    }
+    .nav ul a:hover{opacity:1;}
+    .nav ul a[aria-current]{opacity:1;border-bottom-color:var(--sage);}
+    /* uzi ekran: kategorije u drugom redu ispod imena, uvijek vidljive */
+    @media (max-width:860px){
+      .nav{background:rgba(17,21,26,.96);box-shadow:0 1px 0 var(--line-dark);}
+      .nav-in{flex-direction:column;align-items:stretch;height:auto;padding-top:12px;}
+      .logo{font-size:1.5rem;}
+      .nav ul{
+        gap:14px;justify-content:space-between;overflow-x:auto;scrollbar-width:none;
+        margin:0;padding:10px 0 8px;white-space:nowrap;
+      }
+      .nav ul::-webkit-scrollbar{display:none;}
+      .nav ul a{font-size:1.12rem;letter-spacing:.07em;}
+      .nav .lg{display:none;}
+      .pagehead{padding-top:170px !important;}
+    }
+
+    /* ---------- naslovni pojas podstranica ---------- */
+    .pagehead{
+      background:var(--ink);color:#fff;
+      padding:150px 0 70px;position:relative;overflow:hidden;
+    }
+    .pagehead::after{
+      content:"";position:absolute;right:-120px;bottom:-160px;width:420px;height:420px;
+      border:1px solid var(--line-dark);border-radius:50%;
+    }
+    .crumbs{
+      font-family:var(--head);font-size:1.1rem;letter-spacing:.14em;text-transform:uppercase;
+      color:var(--on-dark-soft);margin:0 0 14px;
+    }
+    .crumbs a{text-decoration:none;color:var(--sage);}
+    .pagehead p.lead{max-width:560px;margin:16px 0 0;color:var(--on-dark-soft);font-size:1.05rem;}
+
+    /* ---------- mjesto za fotku dok je nema ---------- */
+    .ph{
+      background:repeating-linear-gradient(135deg,#dfe2da 0 14px,#e8eae4 14px 28px);
+      color:#56605a;display:flex;align-items:center;justify-content:center;text-align:center;
+      font-family:var(--head);font-size:1.25rem;letter-spacing:.1em;text-transform:uppercase;
+      padding:20px;border:2px dashed #aab1a6;
+    }
+    .dark .ph,.ph--dark{background:repeating-linear-gradient(135deg,#1c232a 0 14px,#212931 14px 28px);color:#7d878f;border-color:#3a444d;}
+
+    /* ---------- podnozje ---------- */
+    .foot{background:#0B0E11;color:var(--on-dark-soft);padding:64px 0 34px;font-size:.92rem;}
+    .foot-grid{display:grid;gap:36px;grid-template-columns:1fr;}
+    @media (min-width:760px){ .foot-grid{grid-template-columns:1.4fr 1fr 1fr;} }
+    .foot h4{font-family:var(--head);font-weight:500;font-size:1.3rem;letter-spacing:.12em;text-transform:uppercase;color:#fff;margin:0 0 12px;}
+    .foot ul{list-style:none;margin:0;padding:0;display:grid;gap:6px;}
+    .foot a{text-decoration:none;}
+    .foot a:hover{color:#fff;}
+    .foot .fine{border-top:1px solid var(--line-dark);margin-top:44px;padding-top:22px;font-size:.8rem;display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between;}
+    .ig{display:inline-flex;align-items:center;gap:8px;color:var(--sage);}
+
+    /* ---------- MailerLite obrazac, u nasem ruhu ---------- */
+    .ml-form-embedBody form{margin:0;}
+    .ml-form-fieldRow{margin:0 0 12px;}
+    .ml-field-group{display:flex;flex-direction:column;gap:5px;}
+    .ml-field-group label{font-family:var(--head);font-size:1.1rem;letter-spacing:.12em;text-transform:uppercase;color:var(--on-dark-soft);line-height:1;}
+    .ml-form-embedBody input.form-control{
+      width:100%;background:#fff;color:var(--text);border:1px solid var(--line);border-radius:10px;
+      font-family:var(--body);font-size:1rem;padding:13px 14px;
+    }
+    .ml-form-embedBody input.form-control:focus{outline:2px solid var(--sage);outline-offset:1px;}
+    .ml-form-embedPermissions{margin:14px 0 0;}
+    .ml-form-embedPermissionsOptionsCheckbox label{display:flex;align-items:flex-start;gap:10px;cursor:pointer;}
+    .ml-form-embedPermissionsOptionsCheckbox input[type=checkbox]{margin:4px 0 0;width:17px;height:17px;flex:none;accent-color:var(--green);}
+    .ml-form-embedPermissionsOptionsCheckbox .label-description{font-size:.85rem;line-height:1.5;color:var(--on-dark-soft);}
+    .ml-form-embedSubmit{margin-top:18px;}
+    .ml-form-embedSubmit button.primary{
+      width:100%;border:0;border-radius:999px;cursor:pointer;background:var(--green);color:#fff;
+      font-family:var(--head);font-size:1.35rem;letter-spacing:.08em;text-transform:uppercase;
+      padding:16px 20px 13px;line-height:1;transition:background .2s ease;
+    }
+    .ml-form-embedSubmit button.primary:hover{background:var(--green-hi);}
+    .ml-form-embedSubmit button.loading{display:none;}
+    .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);}
+    .row-success h4{font-family:var(--head);font-size:2rem;text-transform:uppercase;letter-spacing:.05em;color:var(--sage);margin:0 0 6px;font-weight:600;}
+    .row-success p{margin:0;}
+
+    /* ---------- privremeno: podatak koji Patrik jos treba poslati ---------- */
+    .todo{background:#F9CE4C;color:#1B2024;padding:0 5px;border-radius:3px;font-style:normal;}
+
+    @media (prefers-reduced-motion:reduce){ *{transition:none !important;scroll-behavior:auto !important;} }
+  </style>
+</head>
+<body>
+
+<header class:list={['nav', { always: !!crumb }]} id="nav">
+  <div class="container nav-in">
+    <a class="logo" href="/">Patrik <span>Megerle</span></a>
+    <nav aria-label="Glavna navigacija">
+      <ul>
+        {links.map((l) => (
+          <li><a href={l.href} aria-current={l.href === path ? 'page' : undefined}>
+            {l.label === 'Online programi' ? <><span class="lg">Online </span>programi</> : l.label}
+          </a></li>
+        ))}
+      </ul>
+    </nav>
+  </div>
+</header>
+
+{crumb && (
+  <section class="pagehead">
+    <div class="container">
+      <p class="crumbs"><a href="/">Početna</a> &nbsp;/&nbsp; {crumb}</p>
+      <h1 class="h-xl">{crumb}</h1>
+      {lead && <p class="lead">{lead}</p>}
+    </div>
+  </section>
+)}
+
+<main>
+  <slot />
+</main>
+
+<footer class="foot">
+  <div class="container">
+    <div class="foot-grid">
+      <div>
+        <a class="logo" href="/">Patrik <span>Megerle</span></a>
+        <p style="margin:14px 0 16px;max-width:340px;">
+          Fizioterapeut za bol u leđima, vratu i herniju diska. Pomažem ti da se
+          riješiš boli bez tableta i bez straha od pokreta.
+        </p>
+        <a class="ig" href="https://www.instagram.com/patrik_megerle/">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5" stroke="currentColor" stroke-width="1.7"/><circle cx="12" cy="12" r="4.2" stroke="currentColor" stroke-width="1.7"/><circle cx="17.6" cy="6.4" r="1.2" fill="currentColor"/></svg>
+          @patrik_megerle
+        </a>
+      </div>
+      <div>
+        <h4>Stranice</h4>
+        <ul>{links.map((l) => <li><a href={l.href}>{l.label}</a></li>)}</ul>
+      </div>
+      <div>
+        <h4>Besplatno</h4>
+        <ul>
+          <li><a href="/#besplatno">Prvih 14 dana</a></li>
+          <li><a href="/kviz/">Kviz o bolovima u leđima</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="fine">
+      <span>© {new Date().getFullYear()} Patrik Megerle</span>
+      <span>Sadržaj je opća edukacija, ne individualna terapija. Kod crvenih zastavica javi se liječniku.</span>
+    </div>
+  </div>
+</footer>
+
+<script is:inline>
+  (function(){
+    var nav=document.getElementById('nav');
+    function s(){nav.classList.toggle('solid',window.scrollY>40);}
+    s();window.addEventListener('scroll',s,{passive:true});
+  })();
+</script>
+</body>
+</html>

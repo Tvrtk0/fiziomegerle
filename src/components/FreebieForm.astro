@@ -1,0 +1,64 @@
+---
+// MailerLite obrazac za "Prvih 14 dana". Markup i klase su MailerLiteovi (ne mijenjati),
+// izgled je u Site.astro pod .ml-*.
+---
+<div id="mlb2-45806986" class="ml-form-embedContainer ml-subscribe-form ml-subscribe-form-45806986">
+  <div class="ml-form-embedWrapper embedForm">
+    <div class="ml-form-embedBody row-form">
+      <form class="ml-block-form" action="https://assets.mailerlite.com/jsonp/2628629/forms/198263471418115576/subscribe" data-code="" method="post" target="_blank">
+        <div class="ml-form-formContent">
+          <div class="ml-form-fieldRow">
+            <div class="ml-field-group ml-field-name">
+              <label for="ml-ime">Ime</label>
+              <input id="ml-ime" aria-label="Ime" type="text" class="form-control" name="fields[name]" placeholder="" autocomplete="given-name">
+            </div>
+          </div>
+          <div class="ml-form-fieldRow ml-last-item">
+            <div class="ml-field-group ml-field-email ml-validate-email ml-validate-required">
+              <label for="ml-mail">E-mail</label>
+              <input id="ml-mail" aria-label="E-mail" aria-required="true" type="email" class="form-control" name="fields[email]" placeholder="" autocomplete="email">
+            </div>
+          </div>
+        </div>
+
+        <div class="ml-form-embedPermissions">
+          <div class="ml-form-embedPermissionsContent default">
+            <div class="ml-form-embedPermissionsOptions">
+              <div class="ml-form-embedPermissionsOptionsCheckbox">
+                <label>
+                  <input type="checkbox" name="gdpr[]" value="Email">
+                  <span class="label-description">Sla&#382;em se da mi Patrik Megerle po&#353;alje dokument na e-mail i povremeno korisne savjete o bolovima u le&#273;ima. Odjaviti se mogu bilo kad.</span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <input type="hidden" name="ml-submit" value="1">
+        <div class="ml-form-embedSubmit">
+          <button type="submit" class="primary">Pošalji mi dokument</button>
+          <button disabled="disabled" style="display:none;" type="button" class="loading">
+            <div class="ml-form-embedSubmitLoad"></div><span class="sr-only">Šaljem…</span>
+          </button>
+        </div>
+        <input type="hidden" name="anticsrf" value="true">
+      </form>
+    </div>
+
+    <div class="ml-form-successBody row-success" style="display:none">
+      <div class="ml-form-successContent">
+        <h4>Provjeri sandučić</h4>
+        <p>Dokument ti stiže za koju minutu. Ako ga nema, pogledaj i mapu Promocije.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script is:inline>
+  function ml_webform_success_45806986(){
+    var $ = window.ml_jQuery || window.jQuery;
+    $('.ml-subscribe-form-45806986 .row-success').show();
+    $('.ml-subscribe-form-45806986 .row-form').hide();
+  }
+</script>
+<script is:inline src="https://groot.mailerlite.com/js/w/webforms.min.js?v83147fa8ce2d95cb73ece7f28b469519" type="text/javascript"></script>
