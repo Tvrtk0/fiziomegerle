@@ -7,7 +7,7 @@ import Photo from '../components/Photo.astro';
 const PORTRAIT = '/img/portret.jpg';  // glavna fotka
 const TRAINING = '/img/zgib.jpg';     // trening
 const TRAINING2 = '/img/sklek.jpg';   // trening
-const FOOTBALL = '/img/nogomet.jpg';  // izrez iz momcadske fotke, Patrik u sredini
+const FOOTBALL = '/img/nogomet.jpg';  // momcadska fotka, malo izrezana, bez povecanja
 ---
 <Site
   title="O meni | Patrik Megerle, fizioterapeut"
@@ -58,10 +58,14 @@ const FOOTBALL = '/img/nogomet.jpg';  // izrez iz momcadske fotke, Patrik u sred
 
   .gallery{display:grid;gap:16px;}
   .gallery :global(img){border-radius:14px;}
-  /* trening i teren: na mobitelu traka koja se povlaci prstom */
-  .g-sport{grid-auto-flow:column;grid-auto-columns:72%;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:6px;scrollbar-width:thin;}
-  .g-sport > :global(*){scroll-snap-align:start;}
-  @media (min-width:760px){ .g-sport{grid-auto-flow:row;grid-template-columns:repeat(3,1fr);overflow:visible;} }
+  /* trening i teren: dvije uspravne + siroka momcadska */
+  .g-sport{grid-template-columns:1fr 1fr;}
+  .g-sport .wide{grid-column:1/-1;}
+  @media (min-width:760px){
+    .g-sport{grid-template-columns:1fr 1fr 2.2fr;}
+    .g-sport .wide{grid-column:auto;}
+    .g-sport .wide :global(img){height:100%;aspect-ratio:auto !important;}
+  }
 
   .cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:10px;}
 </style>
@@ -215,7 +219,7 @@ const FOOTBALL = '/img/nogomet.jpg';  // izrez iz momcadske fotke, Patrik u sred
       <div class="gallery g-sport">
         <Photo src={TRAINING} alt="Patrik radi zgibove" label="trening" ratio="4/5" pos="center 40%" />
         <Photo src={TRAINING2} alt="Patrik radi sklekove na vanjskom vježbalištu" label="trening" ratio="4/5" pos="center 45%" />
-        <Photo src={FOOTBALL} alt="Patrik u dresu svoje nogometne momčadi" label="nogomet" ratio="4/5" pos="center 30%" />
+        <div class="wide"><Photo src={FOOTBALL} alt="Patrik sa svojom nogometnom momčadi" label="nogomet" ratio="16/9" /></div>
       </div>
       <div class="cta" style="margin-top:44px;">
         <a class="btn" href="/program/">Online programi</a>
