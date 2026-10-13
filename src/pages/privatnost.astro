@@ -1,0 +1,81 @@
+---
+// fiziomegerle.com/privatnost — pravila privatnosti (GDPR).
+// Na ovu stranicu vodi i 3. pitanje za ulazak u Facebook grupu.
+import Site from '../layouts/Site.astro';
+
+const EMAIL = 'patrikmegerlebj@gmail.com';
+const UPDATED = '13. listopada 2026.';
+---
+<Site
+  title="Pravila privatnosti | Patrik Megerle, fizioterapeut"
+  description="Koje podatke prikupljam, zašto, koliko ih čuvam i kako se možeš odjaviti ili zatražiti brisanje."
+  path="/privatnost/"
+  crumb="Privatnost"
+  lead="Kratko i jasno: koje podatke prikupljam, zašto i kako ih možeš obrisati."
+>
+<style>
+  .legal{max-width:760px;}
+  .legal h2{margin:44px 0 12px;}
+  .legal h2:first-child{margin-top:0;}
+  .legal p,.legal li{color:var(--text-soft);}
+  .legal ul{padding-left:20px;}
+  .legal li{margin-bottom:6px;}
+  .legal strong{color:var(--text);}
+  .legal .upd{margin-top:48px;font-size:.9rem;}
+</style>
+
+  <section class="sec">
+    <div class="container">
+      <div class="legal">
+        <h2 class="h-sm">Tko obrađuje tvoje podatke</h2>
+        <p>
+          Voditelj obrade je <strong>Patrik Megerle</strong>, fizioterapeut, Hrvatska.
+          Za sve vezano uz tvoje podatke piši na <a href={`mailto:${EMAIL}`}>{EMAIL}</a>.
+        </p>
+
+        <h2 class="h-sm">Koje podatke prikupljam</h2>
+        <ul>
+          <li><strong>E-mail adresu i ime</strong> – kad se prijaviš za besplatni vodič „Prvih 14 dana“ na ovoj stranici ili ostaviš e-mail pri ulasku u Facebook grupu „Bolna leđa i hernija diska | Savjeti fizioterapeuta“.</li>
+          <li><strong>Odgovore na pitanja za ulazak u Facebook grupu</strong> – što te muči i koliko dugo imaš bolove.</li>
+          <li><strong>Odgovore iz upitnika</strong> – ako ispuniš upitnik za program (opis tvojih tegoba i kontakt).</li>
+        </ul>
+        <p>Ova stranica ne koristi kolačiće za praćenje ni analitiku.</p>
+
+        <h2 class="h-sm">Zašto ih koristim</h2>
+        <ul>
+          <li>da ti pošaljem vodič koji si tražio/la,</li>
+          <li>da ti povremeno šaljem savjete o bolovima u leđima i obavijesti o programima,</li>
+          <li>da odobrim tvoj ulazak u grupu i bolje razumijem s čime se članovi bore,</li>
+          <li>da ti odgovorim na upitnik i predložim program koji ima smisla.</li>
+        </ul>
+        <p>
+          Pravna osnova je <strong>tvoja privola</strong> (čl. 6. st. 1. t. (a) GDPR-a).
+          Podatke ne prodajem i ne dajem nikome za njihov marketing.
+        </p>
+
+        <h2 class="h-sm">Koje alate koristim</h2>
+        <ul>
+          <li><strong>MailerLite</strong> – za slanje e-mailova (tvrtka u EU).</li>
+          <li><strong>Meta (Facebook)</strong> – za Facebook grupu i stranicu.</li>
+          <li><strong>Google Forms</strong> – za upitnik za program.</li>
+        </ul>
+        <p>Ti pružatelji obrađuju podatke samo u svrhu svoje usluge, prema vlastitim pravilima privatnosti.</p>
+
+        <h2 class="h-sm">Koliko ih čuvam</h2>
+        <p>
+          Dok se ne odjaviš ili ne zatražiš brisanje. Odgovore na pitanja za ulazak u grupu
+          i upitnik brišem kad više nisu potrebni, a najkasnije nakon 2 godine.
+        </p>
+
+        <h2 class="h-sm">Tvoja prava</h2>
+        <ul>
+          <li><strong>Odjava u svakom trenutku</strong> – link je na dnu svakog e-maila.</li>
+          <li>Pravo na uvid, ispravak i brisanje podataka te na povlačenje privole – piši na <a href={`mailto:${EMAIL}`}>{EMAIL}</a>.</li>
+          <li>Pravo na pritužbu Agenciji za zaštitu osobnih podataka (<a href="https://azop.hr">azop.hr</a>).</li>
+        </ul>
+
+        <p class="upd">Zadnja izmjena: {UPDATED}</p>
+      </div>
+    </div>
+  </section>
+</Site>
